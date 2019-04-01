@@ -37,12 +37,19 @@ class TedCrawl():
     talkspeaker = []
 
     def __init__(self):
+
         a = []
-        with open("chart","r",encoding="utf-8") as readfile:
-            for line in readfile:
-                a.append(line[1])
-            number = len(a)
-        self.num = number
+
+        if os.path.exists("chart") == False:
+            self.num = 0
+            # with open("chart","w",encoding="utf-8") as writefile:
+            #     writefile.write("D1")
+        else:
+            with open("chart","r",encoding="utf-8") as readfile:
+                for line in readfile:
+                    a.append(line[1])
+                number = len(a)
+            self.num = number
 
 
     def engcrawl(self, lang='en'):
@@ -101,6 +108,9 @@ class TedCrawl():
 
     
     def getDetail(self):
+        # if os.path.exists("chart") == False:
+        #     with open("chart","w",encoding="utf-8") as writefile:
+        #         writefile.write("D1")
         if self.isEng == False:
             with open("chart", "a", encoding="utf-8") as addfile:
                 addfile.write("D{}\n".format(self.num))
@@ -123,8 +133,12 @@ class TedCrawl():
 
             with open("html/{}.htm".format(self.num), 'w', encoding='utf-8') as file:
                 file.write(html)
-            with open("chart", "a", encoding="utf-8") as addfile:
-                addfile.write("D{}\n".format(self.num))
+            if os.path.exists("chart") == False:
+                with open("chart","w",encoding="utf-8") as writefile:
+                    writefile.write("D1")
+            else:
+                with open("chart", "a", encoding="utf-8") as addfile:
+                    addfile.write("D{}\n".format(self.num))
 
 
 

@@ -26,7 +26,7 @@ def updateTalk():
     cur.execute(sqlupdateId)
     uid = cur.fetchall()
 
-    if uid == None:
+    if len(uid) == 0:
         return
 
     uplastid = uid[0][0]
