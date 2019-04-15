@@ -127,6 +127,9 @@ class TedCrawl():
             url = 'https://www.ted.com/talks/' + str(self.num)
             req = requests.get(url)
             print(req.status_code)
+            if req.status_code == 429:
+                time.sleep(10)
+                req = requests.get(url)
             html = req.text
 
             print("{} Detail requests success ".format(self.num))

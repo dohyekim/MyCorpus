@@ -7,7 +7,7 @@ import pymysql
 import os
 import tedfunctions as f
 
-sqllastid = 'select talk_id from Korean order by talk_id desc limit 1'
+sqllastid = 'select talk_id from Talk order by talk_id desc limit 1'
 sqlTalk = '''insert into Talk(talk_id, title, event, talk_year, tags) 
                         values( %s,%s,%s,%s,%s)'''
 sqlSpeaker = "insert into Speaker(speaker_id, name, field) values(%s, %s, %s)"
@@ -85,7 +85,6 @@ class Ted():
     def saveTalkSpeaker(self):
         self.save(sqlTalkSpeaker, self.talkspeaker)
         print('@@@@@@@@@@@@@@@@@@@@@@@@ TalkSpeaker Done @@@@@@@@@@@@@@@@@@@@@@@@')
-
 
     def sqlEngData(self, lang='en'):
         if os.path.exists("html/" + lang + str(self.num) + ".json") == False:
