@@ -27,6 +27,7 @@ import requests
 # print(type(jjson))
 # with open("chart", "w", encoding="utf-8") as chartfile:
 #     chartfile.write("D1, \n")
-for k in range(24,198):
+
+for k in range(2,756):
     with open("chart", "a", encoding="utf-8") as chartfile:
         chartfile.write("D{} \n".format(k))
